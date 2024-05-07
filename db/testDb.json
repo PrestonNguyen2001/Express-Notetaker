@@ -1,0 +1,13 @@
+// testDb.json
+[
+  {
+    "id": "1",
+    "title": "Test Note 1",
+    "text": "This is a test note 1"
+  },
+  {
+    "id": "2",
+    "title": "Test Note 2",
+    "text": "This is a test note 2"
+  }
+]

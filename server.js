@@ -1,4 +1,4 @@
-// app.js (or server.js)
+
 const express = require("express");
 const htmlRoutes = require("./routes/htmlRoutes");
 const apiRoutes = require("./routes/apiRoutes");
@@ -16,6 +16,9 @@ app.use(htmlRoutes);
 app.use('/api', apiRoutes);
 
 // Start the server
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+module.exports = app;
