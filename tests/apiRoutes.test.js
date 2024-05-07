@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("../server"); 
+const app = require("../server");
 
 describe("API Routes", () => {
   it("should return status 200 and an array of notes for GET /api/notes", async () => {
@@ -30,4 +30,23 @@ describe("API Routes", () => {
     expect(deleteResponse.status).toBe(200);
     expect(deleteResponse.body.message).toBe("Note deleted successfully");
   });
+});
+
+afterAll(async () => {
+  try {
+    // Fetch all notes
+    const response = await request(app).get("/api/notes");
+    const notes = response.body;
+
+    // Delete each note
+    await Promise.all(
+      notes.map(async (note) => {
+        await request(app).delete(`/api/notes/${note.id}`);
+      })
+    );
+
+    console.log("All test notes deleted successfully");
+  } catch (error) {
+    console.error("Error deleting test notes:", error);
+  }
 });
